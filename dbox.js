@@ -353,6 +353,10 @@ exports.app = function(config){
         },
 
         cp: function(from_path, to_path, args, cb){
+          options = {
+            oauth_token_secret: options.oauth_token_secret,
+            oauth_token: options.oauth_token
+          };
           var params = sign(options)
           
           if(cb == null){
@@ -418,6 +422,10 @@ exports.app = function(config){
         },
 
         rm: function(path, args, cb){
+          options = {
+            oauth_token_secret: options.oauth_token_secret,
+            oauth_token: options.oauth_token
+          };
           var params = sign(options)
           if(cb == null){
             cb = args
