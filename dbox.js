@@ -49,7 +49,10 @@ exports.app = function(config){
 
     // creates client object
     client: function(options){
-      var options = options
+      var options = {
+            oauth_token_secret: options.oauth_token_secret,
+            oauth_token: options.oauth_token
+          };
 
       return {
         account: function(cb){
@@ -353,10 +356,6 @@ exports.app = function(config){
         },
 
         cp: function(from_path, to_path, args, cb){
-          options = {
-            oauth_token_secret: options.oauth_token_secret,
-            oauth_token: options.oauth_token
-          };
           var params = sign(options)
           
           if(cb == null){
@@ -422,10 +421,6 @@ exports.app = function(config){
         },
 
         rm: function(path, args, cb){
-          options = {
-            oauth_token_secret: options.oauth_token_secret,
-            oauth_token: options.oauth_token
-          };
           var params = sign(options)
           if(cb == null){
             cb = args
