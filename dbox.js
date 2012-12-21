@@ -393,7 +393,8 @@ exports.app = function(config){
             "body": qs.stringify(params)
           }
           return request(args, function(e, r, b){
-            cb(e ? null : r.statusCode, JSON.parse(b))
+            try{ var b_json = JSON.parse(b); } catch(err) { console.log(b); }
+            cb(e ? null : r.statusCode, b_json)
           })
         },
 
