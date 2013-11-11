@@ -1,6 +1,6 @@
-# dbox 
+# dbox
 
-### Important Notice - dbox API has changed between `v0.4.x` and `v0.5.x`. It is highly recommended you upgrade.
+A Node.JS convenience wrapper around the Dropbox API. Simplifies OAuth handshake and removes HTTP ceremony.
 
 ## Installation
 
@@ -12,7 +12,7 @@ information...
       "name": "yourapplication",
       "version": "0.1.0",
       "dependencies": {
-        "dbox": "0.5.3"
+        "dbox": "0.6.1"
       }
     }
 
@@ -498,6 +498,18 @@ output of `reply` returns...
         [ '/bar', [Object] ]
       ]
     }
+    
+### readdir(path, callback)
+
+Get an array of paths for all files and directories found in the given path. The method calls recursively to dropbox so it can take a long time to evaluate.
+    
+    client.readdir('/', function(status, reply){
+        console.log(reply)
+    })
+
+Output of `readdir` returns...
+    
+    ['/','/foo','/bar']
 
 ## License
 
